@@ -1,4 +1,4 @@
-# spec/auth_helpers.rb
+# spec/support/auth_helpers.rb
 module AuthHelpers
   def auth_headers(user = nil)
     user ||= FactoryBot.create(:user, :staff)
