@@ -3,7 +3,7 @@ FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
     email { Faker::Internet.unique.email }
-    password { SecureRandom.hex(10) }
+    password { Faker::Internet.password }
     role { %w[student staff].sample }
   end
 end

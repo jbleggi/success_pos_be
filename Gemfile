@@ -53,6 +53,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "rspec-rails"
+  gem "faker"
 end
 
 group :development do
@@ -65,6 +66,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "factory_bot_rails"
-  gem "faker"
   gem "shoulda-matchers"
 end
