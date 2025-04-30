@@ -10,10 +10,12 @@ default: &default
 development:
   <<: *default
   database: success_pos_be_development
+  host: /tmp
 
 test:
   <<: *default
   database: success_pos_be_test
+  host: /tmp
 
 production:
   primary:
