@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_30_174545) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_30_184245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -56,11 +56,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_174545) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", null: false
-    t.text "password", null: false
     t.string "role", comment: "staff or student"
     t.datetime "created_at", precision: nil
+    t.string "password_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["password"], name: "index_users_on_password", unique: true
   end
 
   add_foreign_key "transaction_items", "items"

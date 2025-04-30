@@ -1,8 +1,14 @@
 require 'factory_bot_rails'
+require 'faker'
 
-# Create Users
+# Create staff users
 4.times do
-  FactoryBot.create(:user)
+  User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.unique.email,
+    password: "password123",
+    role: "staff"
+  )
 end
 
 # Create Items
