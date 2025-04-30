@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  period_start: 2025-04-30
+  period_end: 2025-04-30
+  total_sales: 9.99
+  total_items_sold: 1
+  generated_at: 2025-04-30 13:45:45
+
+two:
+  period_start: 2025-04-30
+  period_end: 2025-04-30
+  total_sales: 9.99
+  total_items_sold: 1
+  generated_at: 2025-04-30 13:45:45

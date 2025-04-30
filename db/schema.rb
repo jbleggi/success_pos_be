@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_30_173348) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_30_174545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_173348) do
     t.boolean "is_active", default: true
     t.integer "quantity"
     t.datetime "created_at", precision: nil
+  end
+
+  create_table "monthly_reports", force: :cascade do |t|
+    t.date "period_start", null: false
+    t.date "period_end", null: false
+    t.decimal "total_sales"
+    t.integer "total_items_sold"
+    t.datetime "generated_at", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transaction_items", force: :cascade do |t|
+    t.bigint "transaction_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "quantity", null: false
+    t.decimal "price_at_sale", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_transaction_items_on_item_id"
+    t.index ["transaction_id"], name: "index_transaction_items_on_transaction_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -41,4 +62,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_30_173348) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password"], name: "index_users_on_password", unique: true
   end
+
+  add_foreign_key "transaction_items", "items"
+  add_foreign_key "transaction_items", "transactions"
 end
