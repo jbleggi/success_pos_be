@@ -54,6 +54,9 @@ group :development, :test do
 
   gem "rspec-rails"
   gem "faker"
+
+  gem "jwt"
+  gem "bcrypt"
 end
 
 group :development do
